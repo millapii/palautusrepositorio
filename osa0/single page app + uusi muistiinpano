@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant user
+    participant browser
+    participant spa
+    participant server
+
+    user->>browser: open the browser and go to https://studies.cs.helsinki.fi/exampleapp/spa
+    browser->>server: load single page app
+    activate server
+    server->>browser: render app interface
+    deactivate server
+
+    browser->>server: request app resources
+    server->>browser: send resources (HTML, CSS, JS)
+    server->>browser: return note data
+
+    browser->>browser: user creates a new note
+    browser->>server: send new note data (POST)
+    server->>browser: return updated note data
+
+    browser->>browser: update interface with new notes
